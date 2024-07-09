@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import {
   CodeEditorCSS,
@@ -6,6 +6,7 @@ import {
   CodeEditorJS,
   OutputBox,
 } from "./components/index";
+import { Carousel } from "nuka-carousel";
 
 function App() {
   const [htmlCode, setHtmlCode] = useState(`<!DOCTYPE html>
@@ -42,28 +43,64 @@ document
     clickCount++;
     this.textContent = \`Click Count : \${clickCount}\`;
   });`);
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
+  const handleResize = () => {
+    setWindowSize(window.innerWidth);
+  };
+  useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", handleResize);
+  }, []);
 
-  return (
-    <>
-      <div className="flex justify-evenly items-center gap-3 m-3">
-        <div className="w-1/3">
-          <span>HTML</span>
-          <CodeEditorHTML onChange={setHtmlCode} value={htmlCode} />
+  if (windowSize > 900) {
+    return (
+      <>
+        <div className="flex justify-evenly items-center gap-3 m-3">
+          <div className={`w-1/3`}>
+            <span>HTML</span>
+            <CodeEditorHTML onChange={setHtmlCode} value={htmlCode} />
+          </div>
+          <div className="w-1/3">
+            <span>CSS</span>
+            <CodeEditorCSS onChange={setCssCode} value={cssCode} />
+          </div>
+          <div className="w-1/3">
+            <span>JS</span>
+            <CodeEditorJS onChange={setJsCode} value={jsCode} />
+          </div>
         </div>
-        <div className="w-1/3">
-          <span>CSS</span>
-          <CodeEditorCSS onChange={setCssCode} value={cssCode} />
+        <div>
+          <OutputBox htmlCode={htmlCode} cssCode={cssCode} jsCode={jsCode} />
         </div>
-        <div className="w-1/3">
-          <span>JS</span>
-          <CodeEditorJS onChange={setJsCode} value={jsCode} />
+      </>
+    );
+  } else {
+    return (
+      <>
+        <div className="m-3">
+          <Carousel scrollDistance={300} showArrows="hover">
+            <div className="flex justify-evenly items-center gap-3 w-fit">
+              <div className={`w-72`}>
+                <span>HTML</span>
+                <CodeEditorHTML onChange={setHtmlCode} value={htmlCode} />
+              </div>
+              <div className={`w-72`}>
+                <span>CSS</span>
+                <CodeEditorCSS onChange={setCssCode} value={cssCode} />
+              </div>
+              <div className={`w-72`}>
+                <span>JS</span>
+                <CodeEditorJS onChange={setJsCode} value={jsCode} />
+              </div>
+            </div>
+          </Carousel>
         </div>
-      </div>
-      <div>
-        <OutputBox htmlCode={htmlCode} cssCode={cssCode} jsCode={jsCode} />
-      </div>
-    </>
-  );
+        <div>
+          <OutputBox htmlCode={htmlCode} cssCode={cssCode} jsCode={jsCode} />
+        </div>
+      </>
+    );
+  }
 }
 
 export default App;

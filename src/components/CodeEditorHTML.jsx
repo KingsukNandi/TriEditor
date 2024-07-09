@@ -8,14 +8,15 @@ function CodeEditorHTML(props) {
   };
   return (
     <CodeMirror
-      lineWrapping={true}
+      // lineWrapping={true}
       // className="m-6"
+      // className="focus:h-0"
       theme="dark"
       value={props.value}
       height="40vh"
       width="100%"
       extensions={[html({ selfClosingTags: true })]}
-      basicSetup={{ lineWrapping: true }}
+      // basicSetup={{ lineWrapping: true }}
       onChange={handleChange}
     />
   );

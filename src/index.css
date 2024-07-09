@@ -8,7 +8,7 @@
   transition: all 0.13s;
 }
 body {
-  overflow: hidden;
+  overflow-x: hidden;
   background-color: #121417;
 }
 ::-webkit-scrollbar {
