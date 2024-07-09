@@ -1,23 +1,26 @@
-import React from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { html } from "@codemirror/lang-html";
+import { useDispatch, useSelector } from "react-redux";
+import { setHtmlCode } from "../store/codeSlice";
 
-function CodeEditorHTML(props) {
-  const handleChange = (value) => {
-    props.onChange(value);
-  };
+function CodeEditorHTML() {
+  const dispatch = useDispatch();
+  const htmlCode = useSelector((state) => state.code.htmlCode);
+
   return (
     <CodeMirror
       // lineWrapping={true}
       // className="m-6"
       // className="focus:h-0"
       theme="dark"
-      value={props.value}
+      value={htmlCode}
       height="40vh"
       width="100%"
       extensions={[html({ selfClosingTags: true })]}
       // basicSetup={{ lineWrapping: true }}
-      onChange={handleChange}
+      onChange={(data) => {
+        dispatch(setHtmlCode(data));
+      }}
     />
   );
 }

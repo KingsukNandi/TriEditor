@@ -14,12 +14,14 @@
     "@codemirror/lang-css": "^6.2.1",
     "@codemirror/lang-html": "^6.4.9",
     "@codemirror/lang-javascript": "^6.2.2",
+    "@reduxjs/toolkit": "^2.2.6",
     "@uiw/react-codemirror": "^4.23.0",
     "codemirror": "^5.65.16",
     "nuka-carousel": "^8.0.1",
     "react": "^18.3.1",
     "react-codemirror2": "^8.0.0",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-redux": "^9.1.2"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

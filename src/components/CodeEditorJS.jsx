@@ -1,20 +1,23 @@
-import React from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
+import { setJsCode } from "../store/codeSlice";
+import { useDispatch, useSelector } from "react-redux";
 
-function CodeEditorJS(props) {
-  const handleChange = (value) => {
-    props.onChange(value);
-  };
+function CodeEditorJS() {
+  const dispatch = useDispatch();
+  const jsCode = useSelector((state) => state.code.jsCode);
+
   return (
     <CodeMirror
       // className="m-6"
       theme="dark"
-      value={props.value}
+      value={jsCode}
       height="40vh"
       width="100%"
       extensions={[javascript({ jsx: true })]}
-      onChange={handleChange}
+      onChange={(data) => {
+        dispatch(setJsCode(data));
+      }}
     />
   );
 }

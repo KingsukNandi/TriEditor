@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
-function OutputBox(props) {
-  const [htmlCode, setHtmlCode] = useState(props.htmlCode);
-  const [cssCode, setCssCode] = useState(props.cssCode);
-  const [jsCode, setJsCode] = useState(props.jsCode);
+function OutputBox() {
   const [combinedCode, setCombinedCode] = useState("");
+  const htmlCode = useSelector((state) => state.code.htmlCode);
+  const cssCode = useSelector((state) => state.code.cssCode);
+  const jsCode = useSelector((state) => state.code.jsCode);
 
   useEffect(() => {
-    setHtmlCode(props.htmlCode);
-    setCssCode(props.cssCode);
-    setJsCode(props.jsCode);
-
     const updatedCombinedCode = `
       <!DOCTYPE html>
       <html lang="en">
@@ -32,11 +29,10 @@ function OutputBox(props) {
     `;
 
     setCombinedCode(updatedCombinedCode);
-  }, [props.htmlCode, props.cssCode, props.jsCode, cssCode, htmlCode, jsCode]);
+  }, [cssCode, htmlCode, jsCode]);
 
   return (
     <div
-      className=" m-3"
       style={{
         height: "53vh",
       }}
