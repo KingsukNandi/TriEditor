@@ -57,15 +57,15 @@ document
       <>
         <div className="flex justify-evenly items-center gap-3 m-3">
           <div className={`w-1/3`}>
-            <span>HTML</span>
+            <span className="texts">HTML</span>
             <CodeEditorHTML onChange={setHtmlCode} value={htmlCode} />
           </div>
           <div className="w-1/3">
-            <span>CSS</span>
+            <span className="texts">CSS</span>
             <CodeEditorCSS onChange={setCssCode} value={cssCode} />
           </div>
           <div className="w-1/3">
-            <span>JS</span>
+            <span className="texts">JS</span>
             <CodeEditorJS onChange={setJsCode} value={jsCode} />
           </div>
         </div>
@@ -81,15 +81,15 @@ document
           <Carousel scrollDistance={300} showArrows="hover">
             <div className="flex justify-evenly items-center gap-3 w-fit">
               <div className={`w-72`}>
-                <span>HTML</span>
+                <span className="texts">HTML</span>
                 <CodeEditorHTML onChange={setHtmlCode} value={htmlCode} />
               </div>
               <div className={`w-72`}>
-                <span>CSS</span>
+                <span className="texts">CSS</span>
                 <CodeEditorCSS onChange={setCssCode} value={cssCode} />
               </div>
               <div className={`w-72`}>
-                <span>JS</span>
+                <span className="texts">JS</span>
                 <CodeEditorJS onChange={setJsCode} value={jsCode} />
               </div>
             </div>
