@@ -7,7 +7,8 @@ function Footer() {
         Developed by&nbsp;
         <a
           className="underline font-semibold text-gray-300 hover:text-white"
-          href="www.linkedin.com/in/kingsuk-nandi"
+          href="https://www.linkedin.com/in/kingsuk-nandi/"
+          target="_blank"
         >
           Kingsuk Nandi
         </a>
