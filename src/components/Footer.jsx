@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="text-center">
+    <div className="text-center texts">
       <span className="text-gray-400 text-sm">
         Developed by&nbsp;
         <a
